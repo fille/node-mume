@@ -20,7 +20,7 @@ var app = require('express').createServer();
 exports.StartSite = function() {
 
    app.listen(9000);
-   
+      
 }
 
 app.get('/',function(req,res) { 
@@ -31,10 +31,10 @@ app.get('/',function(req,res) {
 exports.StartSocket = function()
 {
 	var clients =[];
-	var socket = io.listen(app)
+	var socket = io.listen(app);
 	
 	socket.on('connection',function(client) {
-
+			client.send("hello");
 			client.push(client);
 			client.on('message',function() {});
 			client.on('disconnect',function() {} );		
@@ -46,3 +46,4 @@ exports.StartSocket = function()
 
 var server =require('./server.js'); 
 server.StartSite();
+server.StartSocket();

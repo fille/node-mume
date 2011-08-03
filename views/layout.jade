@@ -1,7 +1,13 @@
 !!!5
- html
+html
   head
-   script(type="text/javascript",src="http://127.0.0.1:9000/socket.io/socket.io.js")
+   script(type="text/javascript",src="http://localhost:9000/socket.io/socket.io.js")
    script(type="text/javascript",src="http://code.jquery.com/jquery-1.6.1.min.js")
   body
+   script(type="text/javascript")
+    var socket = new io.connect('127.0.0.1',{'port':'9000'});
+    
+    socket.on('connect', function() { console.log("did connect")});
+    socket.on('message',function(d) { console.log(d)});
+    
   
