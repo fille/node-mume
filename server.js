@@ -2,7 +2,7 @@ var net = require('net');
 var express = require('express');
 var io = require('socket.io');
 
-var mudclient  = [];
+;
   
   exports.NewMudcon  = function ()
   {
@@ -34,8 +34,11 @@ exports.StartSocket = function()
 	var socket = io.listen(app);
 	
 	socket.on('connection',function(client) {
-			client.send("hello");
-			client.push(client);
+		        
+			client.mume  = net.createConnection(4242,"mume.org"); 
+                       client.mume.addListener("data",function(d){ console.log("hej"); client.send(d);});
+                               
+			clients.push(client);
 			client.on('message',function() {});
 			client.on('disconnect',function() {} );		
 	});	
