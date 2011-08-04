@@ -33,14 +33,14 @@ exports.StartSocket = function()
 	var clients =[];
 	var socket = io.listen(app);
 	
-	socket.on('connection',function(client) {
+	socket.sockets.on('connection',function(client) {
 		        
-			client.mume  = net.createConnection(4242,"mume.org"); 
-                       client.mume.addListener("data",function(d){ console.log("hej"); client.send(d);});
+	client.mume  = net.createConnection(4242,"mume.org"); 
+        client.mume.addListener("data",function(d){   client.emit("data",{data:d+ ""});   });
                                
-			clients.push(client);
-			client.on('message',function() {});
-			client.on('disconnect',function() {} );		
+	clients.push(client);
+	client.on('newcommand',function(d) {client.mume.write(d.cmd+"","utf8",function(d) {} )});
+	client.on('disconnect',function() {} );		
 	});	
 	
 

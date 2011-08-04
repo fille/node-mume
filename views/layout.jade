@@ -1,13 +1,40 @@
 !!!5
 html
   head
+   style
+    #out {
+      width:600px;
+      height:400px;
+      font-size:20px;  	
+    }
+    body
+    {
+     background:black;
+     color:white;
+     font-size:20px;
+    }
    script(type="text/javascript",src="http://localhost:9000/socket.io/socket.io.js")
    script(type="text/javascript",src="http://code.jquery.com/jquery-1.6.1.min.js")
   body
    script(type="text/javascript")
+    $(function() {
+    $("#in").click(function() {  
+      if( $("#infield").val() != "")
+      {
+           socket.emit("newcommand",{"cmd":$("#infield").val()+ "\\r" })
+   
+      }
+    })
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() { console.log("did connect")});
-    socket.on('message',function(d) { console.log(d)});
+    socket.on('data',function(d) {
     
+     $("#out").append(d.data + "");	
+    });
+    });
   
+   div#out 
+   div#in
+    input#infield(type="text")
+    input#in(type="button",value="send"); 
