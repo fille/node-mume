@@ -49,9 +49,6 @@ exports.StartSocket = function()
 	client.on('newcommand',function(d) {client.mume.write(d.cmd+"","utf8",function(d) {} )});
 	client.on('disconnect',function() {} );		
 	});	
-	
-
-	
 }
 
 var server =require('./server.js'); 
