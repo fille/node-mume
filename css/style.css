@@ -11,7 +11,7 @@ body
 	margin:0 auto;
 } 
 #out {
-      width:800px;
+      width:880px;
       height:400px;
       font-size:20px;  	
 		overflow:auto; 
@@ -25,6 +25,6 @@ body
  
  #infield
  {
-	width:750px; 	
+	width:840px; 	
  }
   

@@ -1,7 +1,6 @@
 
 $(function() {
-   
-    
+
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() {
@@ -16,11 +15,29 @@ $(function() {
     });
     
     
-    $("#in").live("click",function() {  
+    $("#in").live("click",function(e) {  
+		  
+		     
       if( $("#infield").val() != ""){    
-            socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
+       send();
       }
     });
-    });
+ 	  
+ 	 $("#infield").live("keyup",function(e)
+ 	 {
+ 
+ 	 	switch(e.keyCode){
+ 	 		case 13:
+ 	 		  send();
+ 	 		  break;
+ 	 	}
+ 	 });   
+    
+    var send = function()
+    {
+    	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
+    	$("#infield").select();
+    }
+ });
     
  
