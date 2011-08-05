@@ -1,7 +1,7 @@
 var net = require('net');
 var express = require('express');
 var io = require('socket.io');
-
+var fs = require('fs');
 
   
 
@@ -17,6 +17,19 @@ app.get('/',function(req,res) {
 
 	res.partial('layout.jade',{});
 })
+
+app.get('/client.js',function(req,res) {
+	
+	fs.readFile("js/client.js",function(err,d) {
+	   res.end(d +"");	
+	});
+});
+app.get('/style.css',function(req,res) {
+	
+	fs.readFile("css/style.css",function(err,d) {
+		res.end(d+ "");		
+	});
+});
 
 exports.StartSocket = function()
 {
