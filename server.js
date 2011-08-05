@@ -39,7 +39,11 @@ exports.StartSocket = function()
 	socket.sockets.on('connection',function(client) {
 		        
 	client.mume  = net.createConnection(4242,"mume.org"); 
-        client.mume.addListener("data",function(d){   client.emit("data",{data:d+ ""});   });
+   client.mume.addListener("data",function(d){       
+        
+        var newstring =  d.toString().split("\r\n").join("<br>")
+        client.emit("data",{data:newstring});  
+   });
                                
 	clients.push(client);
 	client.on('newcommand',function(d) {client.mume.write(d.cmd+"","utf8",function(d) {} )});

@@ -1,11 +1,27 @@
-  #out {
-      width:600px;
-      height:400px;
-      font-size:20px;  	
-    }
-    body
+body
     {
      background:black;
      color:white;
      font-size:20px;
     }
+
+#wrapper
+{
+		width:960px;
+
+	margin:0 auto;
+} 
+#out {
+      width:600px;
+      height:400px;
+      font-size:20px;
+      text-align: center;  	
+		overflow:auto; 
+}
+ 
+ .status
+ {
+ 	color:red;
+ 	font-size: 10px;
+ }
+    
