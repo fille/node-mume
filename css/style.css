@@ -27,4 +27,26 @@ body
  {
 	width:840px; 	
  }
-  
+ 
+prompt {} 
+song {color:yellow}
+room {}
+name { color:green;}
+description{}
+terrain {}
+magic {}
+pray { color:cyan;}
+narrate {color:yellow;}
+tell {color:green;}
+enemy {font-weight:bold;}
+status{}
+say { color:cyan}
+exits {};
+header{font-weight:bold;}
+weather{};
+hit {color:cyan};
+damage{};
+look {color:green};
+
+
+
