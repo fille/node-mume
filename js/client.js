@@ -15,8 +15,7 @@ $(function() {
     });
     
     
-    $("#in").live("click",function(e) {  
-		  
+    $("#in").live("click",function(e) {  		  
 		     
       if( $("#infield").val() != ""){    
        send();
@@ -25,7 +24,6 @@ $(function() {
  	  
  	 $("#infield").live("keyup",function(e)
  	 {
- 
  	 	switch(e.keyCode){
  	 		case 13:
  	 		  send();
@@ -36,7 +34,9 @@ $(function() {
     var send = function()
     {
     	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
+        $("#out").append($("#infield").val());
     	$("#infield").select();
+    
     }
  });
     

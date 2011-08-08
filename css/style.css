@@ -1,8 +1,9 @@
 body
     {
+     font-family:Monaco, Courier;
      background:black;
      color:white;
-     font-size:20px;
+     font-size:15px;
     }
 
 #wrapper
@@ -11,23 +12,22 @@ body
 	margin:0 auto;
 } 
 #out {
-      width:880px;
-      height:400px;
-      font-size:20px;  	
+      width:930px;;
+      height:500px;
+       	
 		overflow:auto; 
 }
  
- .status
- {
+ .status{
  	color:red;
  	font-size: 10px;
  }
  
- #infield
- {
-	width:840px; 	
+ #infield {
+   width:840px; 	
  }
- 
+
+/*  MUME RELETED SURF */ 
 prompt {} 
 song {color:yellow}
 room {}
