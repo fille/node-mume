@@ -1,7 +1,18 @@
-This is a Web based mudclient based on the node.js for the Mud  Mume
+This is a Web based mudclient writen in node.js and jquery designed 
+to suit the players of mume
 
 For more information about the mud please visit the gamesites
 
+
 http://mume.org
 http://www.elvenrunes.com
+
+
+Dependency
+
+jquery
+node.js
+express.js
+socket.io
+jade
 
