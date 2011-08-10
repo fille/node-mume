@@ -3,7 +3,7 @@ var keymap = [];
 $(function() {
     
    jQuery.getJSON("/keymap.json",function(data) {
-	console.log(data);	
+	keymap = data;
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() {
@@ -25,23 +25,39 @@ $(function() {
       }
     });
  	  
-    $("#infield").live("keyup",function(e)
-    {
-		console.log(e.keyCode);
- 	 switch(e.keyCode){
- 	        case 13:
- 	 	  send();
- 	 	  break;
- 	 	}
- 	 });   
+    $("#infield").live("keyup",function(e){
+	
+     	isHot = isHotkey(e.keyCode);
+ 	console.log(isHot);	
+	if(isHot.isHotKey == true){
+	  Console.log("hej");
+	}	
+
+    });   
     
-    var send = function()
-    {
+    var send = function(action){
+	if(action == "" ){
     	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
         $("#out").append($("#infield").val());
     	$("#infield").select();
-    
+    	}else {
+	  
+	}
     }
+   var isHotkey = function(key){
+
+	var ishot = {"isHotKey":"false"};
+	//no break statment inside a foreach? 
+	keymap.forEach(function(obj){	
+             if(obj.keycode == key  ) {	
+		ishot.action = obj.action;
+		ishot.isHotKey = true;   
+	     }
+	});
+	return ishot;	
+   }
+
+
  });
  });
  
