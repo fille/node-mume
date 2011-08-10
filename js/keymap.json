@@ -1,0 +1,18 @@
+[  
+   {"description":"UP","keycode":"38","action":""}, 
+   {"description":"DOWN","keycode":"40","action":""},
+   {"description":"LEFT","keycode":"37","action":""},  
+   {"description":"RIGHT","keycode":"39","action":""}, 
+   {"description":"NUM0","keycode":"96","action":"FLEE"}, 
+   {"description":"NUM1","keycode":"97","action":""},  
+   {"description":"NUM2","keycode":"98","action":""}, 
+   {"description":"NUM3","keycode":"99","action":""},
+   {"description":"NUM4","keycode":"100","action":"west"},  
+   {"description":"NUM5","keycode":"101","action":"south"}, 
+   {"description":"NUM6","keycode":"102","action":"east"},
+      
+   {"description":"NUM7","keycode":"103","action":""},  
+   {"description":"NUM8","keycode":"104","action":"NORTH"}, 
+   {"description":"NUM9","keycode":"105","action":""}
+
+]
