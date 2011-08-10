@@ -1,6 +1,9 @@
+var keymap = [];
 
 $(function() {
-
+    
+   jQuery.getJSON("/keymap.json",function(data) {
+	console.log(data);	
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() {
@@ -22,12 +25,13 @@ $(function() {
       }
     });
  	  
- 	 $("#infield").live("keyup",function(e)
- 	 {
- 	 	switch(e.keyCode){
- 	 		case 13:
- 	 		  send();
- 	 		  break;
+    $("#infield").live("keyup",function(e)
+    {
+		console.log(e.keyCode);
+ 	 switch(e.keyCode){
+ 	        case 13:
+ 	 	  send();
+ 	 	  break;
  	 	}
  	 });   
     
@@ -39,5 +43,5 @@ $(function() {
     
     }
  });
-    
+ });
  
