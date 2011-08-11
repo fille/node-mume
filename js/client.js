@@ -30,7 +30,9 @@ $(function() {
      	isHot = isHotkey(e.keyCode);
  		
 	if(isHot.isHotKey == true){
-           send(isHot.action);	  
+           var length =  $("#infield").val().length-1;
+           $("#infield").val($("#infield").val().substring(0,length));
+	   send(isHot.action);	  
 	}else{ 
 	 
 	 switch(e.keyCode){
