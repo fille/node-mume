@@ -28,12 +28,20 @@ $(function() {
     $("#infield").live("keyup",function(e){
 	
      	isHot = isHotkey(e.keyCode);
- 	console.log(isHot);	
+ 		
 	if(isHot.isHotKey == true){
-	  Console.log("hej");
+           send(isHot.action);	  
+	}else{ 
+	 
+	 switch(e.keyCode){
+	 case 13: {
+	  send("");
+          break;
+	  }
+	}
 	}	
+    }); 
 
-    });   
     
     var send = function(action){
 	if(action == "" ){
@@ -41,17 +49,18 @@ $(function() {
         $("#out").append($("#infield").val());
     	$("#infield").select();
     	}else {
-	  
+	  socket.emit("newcommand",{"cmd":action + "\n"});
+	  $("#out").append(action);
 	}
     }
    var isHotkey = function(key){
 
 	var ishot = {"isHotKey":"false"};
-	//no break statment inside a foreach? 
 	keymap.forEach(function(obj){	
              if(obj.keycode == key  ) {	
 		ishot.action = obj.action;
 		ishot.isHotKey = true;   
+	        return true;
 	     }
 	});
 	return ishot;	
