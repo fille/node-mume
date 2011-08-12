@@ -1,5 +1,5 @@
 var keymap = [];
-
+var hej =  new History();
 $(function() {
     
    jQuery.getJSON("/keymap.json",function(data) {
@@ -29,7 +29,7 @@ $(function() {
 	
      	isHot = isHotkey(e.keyCode);
  		
-	if(isHot.isHotKey == true){
+	if(isHot.isHotKey == true ){
            var length =  $("#infield").val().length-1;
            $("#infield").val($("#infield").val().substring(0,length));
 	   send(isHot.action);	  
@@ -67,8 +67,23 @@ $(function() {
 	});
 	return ishot;	
    }
-
-
+   
  });
  });
+
+     function  History()
+     {
+	this.data = [];
+        this.index = 0;
+	this.length =  function () { return this.data.length; }
+	this.enqueue = function(word) { this.data.push(word); }
+	this.dequeue = function() { return this.data.shift(); }
+        this.peek = function() { return data[i]  }
+	this.clear = function () {this.data[] }
+        this.get = function(i) {return this.data[i] }
+        this.getLatest = function() {var out = this.get(index); index++; return out; } 
+        this.clearIndex = function () { this.index = 0  }
+     }
+
+   
  
