@@ -1,5 +1,5 @@
 var keymap = [];
-var hist =  new History();
+var hist =  new History(20);
 $(function() {
     
    jQuery.getJSON("/keymap.json",function(data) {
@@ -38,10 +38,14 @@ $(function() {
 	 switch(e.keyCode){
 	 case 13: {
 	  send("");
+          hist.clearIndex();
           break;
-	  }
-	}
-	}	
+	 }
+	 case 38: {
+	   $("#infield").val(hist.getLatest()); 
+         break;
+	 }
+	}}
     }); 
 
     
@@ -73,17 +77,27 @@ $(function() {
  });
  });
 
-     function  History()
+     function  History(maxval)
      {
 	this.data = [];
         this.index = 0;
-	this.length =  function () { return this.data.length; }
-	this.enqueue = function(word) { this.data.push(word); if(this.length() == 10) { this.dequeue();  }}
+        this.maxLength = maxval;
+	this.length =  function () { return this.data.length;}
+	this.enqueue = function(word) {this.data.push(word); if(this.length() == this.maxLength) { this.dequeue();  }}
 	this.dequeue = function() { return this.data.shift(); }
         this.peek = function() { return data[0]  }
 	this.clear = function () {this.data = [] }
         this.get = function(i) {return this.data[i] }
-        this.getLatest = function() {var out = this.get(index); index++; return out; } 
+        this.getLatest = function() {
+      
+	  var out = this.get(this.index);
+          this.index++;
+	   if(this.index >= this.maxLength || this.index >= this.length() ) {    
+	       this.clearIndex();
+           }
+           
+          return out; 
+          } 
         this.clearIndex = function () { this.index = 0  }
      }
 

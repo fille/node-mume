@@ -1,5 +1,4 @@
-[ 
-   {"description":"UP","keycode":"38","action":"","visible":false }, 
+[  
    {"description":"DOWN","keycode":"40","action":"" ,"visible":false },
    {"description":"LEFT","keycode":"37","action":"","visible":false },  
    {"description":"RIGHT","keycode":"39","action":"" ,"visible":false }, 
