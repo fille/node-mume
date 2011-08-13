@@ -1,9 +1,12 @@
 var keymap = [];
+var actions = [];
+var settings = null;
 var hist =  new History(20);
 $(function() {
     
-   jQuery.getJSON("/keymap.json",function(data) {
-	keymap = data;
+   jQuery.getJSON("/settings.json",function(data) {
+	settings = data;
+	keymap = settings.hotkeys
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() {
@@ -91,7 +94,7 @@ $(function() {
         this.getLatest = function() {
       
 	  var out = this.get(this.index);
-          this.index++;
+          
 	   if(this.index >= this.maxLength || this.index >= this.length() ) {    
 	       this.clearIndex();
            }

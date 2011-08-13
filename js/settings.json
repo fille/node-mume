@@ -1,0 +1,21 @@
+{
+"hotkeys": [  
+  				 {"description":"DOWN","keycode":"40","action":"" ,"visible":false },
+   			 {"description":"LEFT","keycode":"37","action":"","visible":false },  
+   			 {"description":"RIGHT","keycode":"39","action":"" ,"visible":false }, 
+   			 {"description":"NUM0","keycode":"96","action":"FLEE","visible":true }, 
+   			 {"description":"NUM1","keycode":"97","action":"" ,"visible":true },  
+   			 {"description":"NUM2","keycode":"98","action":"","visible":true }, 
+   			 {"description":"NUM3","keycode":"99","action":"","visible":true },
+   			 {"description":"NUM4","keycode":"100","action":"west","visible":true },  
+  				 {"description":"NUM5","keycode":"101","action":"south","visible":true }, 
+   			 {"description":"NUM6","keycode":"102","action":"east","visible":true },
+   			 {"description":"NUM7","keycode":"103","action":"","visible":true },  
+      	    {"description":"NUM8","keycode":"104","action":"NORTH","visible":true }, 
+   			 {"description":"NUM9","keycode":"105","action":"","visible":true }
+],
+"actions" : [  
+ 				{"description":"","pattern":"","action":"" }       
+]
+
+}

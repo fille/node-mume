@@ -27,7 +27,7 @@ app.get('/style.css',function(req,res) {
       res.end(d+ "");		
    });
 });
-app.get('/keymap.json',function(req,res) {
+app.get('/settings.json',function(req,res) {
 
    fs.readFile("js/keymap.json",function(err,d) {
       res.end(d+"");
