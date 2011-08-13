@@ -1,5 +1,5 @@
 var keymap = [];
-var hej =  new History();
+var hist =  new History();
 $(function() {
     
    jQuery.getJSON("/keymap.json",function(data) {
@@ -29,7 +29,7 @@ $(function() {
 	
      	isHot = isHotkey(e.keyCode);
  		
-	if(isHot.isHotKey == true ){
+	if(isHot.isHotKey == true  && isHot.action != "" ){
            var length =  $("#infield").val().length-1;
            $("#infield").val($("#infield").val().substring(0,length));
 	   send(isHot.action);	  
@@ -50,6 +50,8 @@ $(function() {
     	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
         $("#out").append($("#infield").val());
     	$("#infield").select();
+        hist.enqueue($("#infield").val());
+	
     	}else {
 	  socket.emit("newcommand",{"cmd":action + "\n"});
 	  $("#out").append(action);
@@ -76,10 +78,10 @@ $(function() {
 	this.data = [];
         this.index = 0;
 	this.length =  function () { return this.data.length; }
-	this.enqueue = function(word) { this.data.push(word); }
+	this.enqueue = function(word) { this.data.push(word); if(this.length() == 10) { this.dequeue();  }}
 	this.dequeue = function() { return this.data.shift(); }
-        this.peek = function() { return data[i]  }
-	this.clear = function () {this.data[] }
+        this.peek = function() { return data[0]  }
+	this.clear = function () {this.data = [] }
         this.get = function(i) {return this.data[i] }
         this.getLatest = function() {var out = this.get(index); index++; return out; } 
         this.clearIndex = function () { this.index = 0  }
