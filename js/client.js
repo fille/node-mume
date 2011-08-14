@@ -10,8 +10,8 @@ $(function() {
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
     
     socket.on('connect', function() {
-    	  $("#out").append("<p class=\"status\">Connected</p>")
-    	  $("#out").scrollTop = $("#out").scrollHeight;		  
+     $("#out").append("<p class=\"status\">Connected</p>")
+     $("#out").scrollTop = $("#out").scrollHeight;		  
     });
     socket.on('data',function(d) {
     
