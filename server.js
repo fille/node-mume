@@ -2,10 +2,10 @@ var net = require('net');
 var express = require('express');
 var io = require('socket.io');
 var fs = require('fs');
+ 
 
-  
+var app = require('express').createServer()
 
-var app = require('express').createServer();
 
 exports.StartSite = function() {
    app.listen(9000);
@@ -23,7 +23,7 @@ app.get('/client.js',function(req,res) {
 });
 app.get('/style.css',function(req,res) {
 	
-   fs.readFile("css/style.css",function(err,d) {
+   fs.readFile("css/style.css",function(err,d) {	 	
       res.end(d+ "");		
    });
 });
