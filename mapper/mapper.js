@@ -25,8 +25,10 @@ var Mapper = function () {
    this.handler = new htmlparser.DefaultHandler(function(err,dom) {
                      if(err) {}
 		      else { 
-                        var roomName = select(dom,'name');
-			 console.log(title[0]);
+                        var roomName = select(dom,'name')[0].children[0].data;
+			var description = select(dom,'description')[0].children[0].data;
+			var exits   = select(dom,'exits')[0].children[0].data;	          	
+		
                       }
                   });
 
@@ -36,8 +38,16 @@ var Mapper = function () {
     	            }	
 
 }
-/*       
-Example:
+
+var room = function(name,desc,exits){
+
+			this.name = name;
+			this.description = desc
+			this.exits = exits;
+		  }
+      
+//Example:
+
 var a = require('./mapper.js').getMapper();
 a.fetchData("<name>hej</name>");
-*/ 
+ 
