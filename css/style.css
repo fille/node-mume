@@ -45,7 +45,7 @@ exits {};
 header{font-weight:bold;}
 weather{};
 hit {color:cyan};
-damage{};
+damage{color:red;};
 look {color:green};
 
 

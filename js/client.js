@@ -29,6 +29,7 @@ $(function() {
     });
  	  
     $("#infield").live("keyup",function(e){
+
 	
      	isHot = isHotkey(e.keyCode);
  		
@@ -45,8 +46,8 @@ $(function() {
           break;
 	 }
 	 case 38: {
-	   $("#infield").val(hist.getLatest()); 
-         break;
+	  $("#infield").val(hist.getLatest()); 
+          break;
 	 }
 	}}
     }); 
@@ -55,13 +56,13 @@ $(function() {
     var send = function(action){
 	if(action == "" ){
     	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
-        $("#out").append($("#infield").val());
+        $("#out").append("<p class=\"inputtext\">" + $("#infield").val()+"</p>");
     	$("#infield").select();
         hist.enqueue($("#infield").val());
 	
     	}else {
 	  socket.emit("newcommand",{"cmd":action + "\n"});
-	  $("#out").append(action);
+	  $("#out").append("<p class=\"inputtext\">"+ action +"</p><br>");
 	}
     }
    var isHotkey = function(key){
