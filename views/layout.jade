@@ -8,12 +8,9 @@ html
    script(type="text/javascript",src="http://localhost:8000/jqueryui/js/jquery-ui-1.8.16.custom.min.js");
    script(type="text/javascript",src="/client.js");
   body
-   script(type="text/javascript");
-    $(function() {
-     $("#infield").autocomplete();
-     });
    div#wrapper
     div#out 
     div#in
-    input#infield(type="text")
+     div(class="ui-widget")
+      input#infield(type="text")
     input#in(type="button",value="send"); 

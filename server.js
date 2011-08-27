@@ -15,6 +15,13 @@ app.get('/',function(req,res) {
    res.partial('layout.jade',{});
 })
 
+app.get('/style.css',function(req,res) {
+   
+    fs.readFile("css/style.css",function(err,d) {
+    res.end(d+"");
+    });	
+});
+
 app.get('/client.js',function(req,res) {
 	
   fs.readFile("js/client.js",function(err,d) {

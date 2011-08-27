@@ -8,7 +8,7 @@ $(function() {
 	settings = data;
 	keymap = settings.hotkeys
     var socket = new io.connect('127.0.0.1',{'port':'9000'});
-    
+      
     socket.on('connect', function() {
      $("#out").append("<p class=\"status\">Connected</p>")
      $("#out").scrollTop = $("#out").scrollHeight;		  
@@ -20,7 +20,7 @@ $(function() {
      
     });
     
-    
+ 
     $("#in").live("click",function(e) {  		  
 		     
       if( $("#infield").val() != ""){    
@@ -52,13 +52,15 @@ $(function() {
 	}}
     }); 
 
-    
+    $("#infield").autocomplete({source: hist.data});    
     var send = function(action){
 	if(action == "" ){
     	socket.emit("newcommand",{"cmd":$("#infield").val()+ "\n" });
         $("#out").append("<p class=\"inputtext\">" + $("#infield").val()+"</p>");
     	$("#infield").select();
         hist.enqueue($("#infield").val());
+        
+    $("#infield").autocomplete({source: hist.data});   
 	
     	}else {
 	  socket.emit("newcommand",{"cmd":action + "\n"});
@@ -83,14 +85,14 @@ $(function() {
 
      function  History(maxval)
      {
-	this.data = [];
+	     this.data = [];
         this.index = 0;
         this.maxLength = maxval;
-	this.length =  function () { return this.data.length;}
-	this.enqueue = function(word) {this.data.push(word); if(this.length() == this.maxLength) { this.dequeue();  }}
-	this.dequeue = function() { return this.data.shift(); }
+		  this.length =  function () { return this.data.length;}
+		  this.enqueue = function(word) { console.log("hej");this.data.push(word); if(this.length() == this.maxLength) { this.dequeue();  }}
+		  this.dequeue = function() { return this.data.shift(); }
         this.peek = function() { return data[0]  }
-	this.clear = function () {this.data = [] }
+		  this.clear = function () {this.data = [] }
         this.get = function(i) {return this.data[i] }
         this.getLatest = function() {
       
